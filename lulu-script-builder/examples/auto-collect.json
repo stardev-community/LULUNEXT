@@ -1,5 +1,5 @@
 {
-  "project": { "name": "AutoCollect", "title": "Auto Collect", "theme": "Dark", "luluUrl": "https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua" },
+  "project": { "name": "AutoCollect", "title": "Auto Collect", "theme": "Dark", "luluUrl": "https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua" },
   "targets": [
     { "id": "t_quest", "alias": "Quest", "path": "Players.LocalPlayer.leaderstats.Quest", "type": "value" },
     { "id": "t_collect", "alias": "Collect", "path": "ReplicatedStorage.Remotes.Collect", "type": "remote" }

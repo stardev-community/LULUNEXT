@@ -1,24 +1,24 @@
 ---
-name: lulu-script-builder
-description: Membuat script Roblox (Lua) lengkap berbasis library LuluUI dari deskripsi pengguna — path Remote/Value, aksi, watcher, rule, makro, dan UI — menjadi satu file <nama>.lua yang siap dijalankan di executor. Gunakan saat pengguna minta dibuatkan script/tool Roblox dengan LuluUI (auto farm, auto collect, quest tracker, teleport menu, dll.).
+name: stardev-community-luluxroblox
+description: A Claude skill designed to help Claude understand how to create ready-to-run scripts compatible with Delta and other supported executors (support for other Delta-compatible environments is still to be determined). It uses the built-in UI library, Lulu UI v1.4.0. In future Skill version 1.0.1, integration with Dex++ and a customized version of Simple Spy will be added.
 ---
 
-# Lulu Script Builder (versi skill)
+# StarDev Community LuluXRoblox
 
 Mengubah permintaan pengguna → **project JSON** → `scripts/build.js` → **satu file `<NamaScript>.lua`**.
 Generator, validator, dan pengecek sintaks Lua sudah ada di `lib/`; jangan menulis Lua script utama dengan tangan.
 
 ## Aturan keras
 1. UI **hanya LuluUI**. Jangan pakai Rayfield/Orion/Kavo/dll. dan jangan `Instance.new("ScreenGui")`. Custom Lua hanya untuk logika, bukan UI.
-2. Hasil **satu file** `<NamaScript>.lua`. LuluUI **tidak ditanam**; script memuatnya dari URL raw GitHub milik pengguna (`project.luluUrl`). Versi LuluUI yang benar: `references/LuluUI.patched.lua` (sudah ditambal, wajib diupload pengguna ke GitHub-nya sendiri; versi asli tidak kompatibel).
+2. Hasil **satu file** `<NamaScript>.lua`. LuluUI **tidak ditanam**; script memuatnya dari URL raw (`project.luluUrl`). **URL default: `https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua`** — pakai ini kecuali pengguna menyebut URL lain. Versi LuluUI yang benar: `references/LuluUI.patched.lua` (sudah ditambal; versi asli tidak kompatibel).
 3. Jangan mengarang path. Path game harus dari pengguna atau dari hasil `snippets/scan_paths.lua` / `snippets/remote_spy.lua`. Bila belum ada, minta pengguna menjalankan snippet itu dan menempel hasilnya (format `Path | Class | argumen`).
 4. Sampaikan jujur: hasil diuji di tiruan Roblox, **belum** di Roblox/Delta sungguhan; dukungan fungsi executor berbeda-beda; menjalankan script via executor melanggar ToS Roblox dan berisiko akun diblokir. Cukup satu kalimat di akhir, tanpa ceramah.
 
 ## Alur
-1. **Tangkap kebutuhan** (tanya hanya yang benar-benar kurang, maksimal 1 putaran): apa yang dilakukan script, path/Remote + argumen, apa pemicunya (timer, nilai berubah, objek muncul, tombol), kondisi, UI yang diinginkan, URL raw LuluUI, nama script. Boleh mulai dari template: `node scripts/build.js --list-templates`.
+1. **Tangkap kebutuhan** (tanya hanya yang benar-benar kurang, maksimal 1 putaran): apa yang dilakukan script, path/Remote + argumen, apa pemicunya (timer, nilai berubah, objek muncul, tombol), kondisi, UI yang diinginkan, nama script (URL LuluUI tidak perlu ditanyakan, pakai default). Boleh mulai dari template: `node scripts/build.js --list-templates`.
 2. **Tulis project JSON** mengikuti `references/schema.md` (bentuk ringkas: operand `@widget:ID`, kondisi `["@watcher:w.value", ">=", 10]`, bind `"rule:r1"`). Contoh jadi: `examples/auto-collect.json`, `examples/farm-advanced.json`. Pola desain tiga lapis: **Target** (path) → **Logic** (watcher → rule/kondisi → aksi, makro, profil) → **UI** (widget yang diikat ke logic).
-3. **Bangun**: `node scripts/build.js --in project.json --out ./hasil --url <RAW_URL>`. Keluaran JSON: `ok`, `errors`, `issues[]`, `lua.ok`. Perbaiki project sampai `ok: true` dan tidak ada peringatan penting (kecuali yang sengaja). `--check` hanya validasi; `--dump-config` menyimpan bentuk lengkap.
-4. **Serahkan** file `.lua` ke pengguna (kirim sebagai file), plus 3–5 baris: cara pakai (upload `LuluUI.lua` → isi URL raw → jalankan), fitur UI-nya, dan satu catatan batasan (poin 4 di atas). Jangan menempelkan seluruh kode di chat.
+3. **Bangun**: `node scripts/build.js --in project.json --out ./hasil --url https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua` (bisa dihilangkan, default sudah terisi). Keluaran JSON: `ok`, `errors`, `issues[]`, `lua.ok`. Perbaiki project sampai `ok: true` dan tidak ada peringatan penting (kecuali yang sengaja). `--check` hanya validasi; `--dump-config` menyimpan bentuk lengkap.
+4. **Serahkan** file `.lua` ke pengguna (kirim sebagai file), plus 3–5 baris: cara pakai (jalankan `<NamaScript>.lua` di executor; LuluUI dimuat otomatis dari URL default), fitur UI-nya, dan satu catatan batasan (poin 4 di atas). Jangan menempelkan seluruh kode di chat.
 
 ## Praktik desain yang baik
 - Satu **Toggle** per fitur otomatis (ikat ke rule/makro), plus tombol **Stop Semua** (`"bind": "stopall"`).

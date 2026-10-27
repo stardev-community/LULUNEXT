@@ -3,7 +3,7 @@
 JSON; semua kunci kecuali yang ditandai wajib boleh dihilangkan (default diisi). ID bebas tapi unik (`t_…`, `a_…`, `wt_…`, `r_…`, `m_…`, `w_…`). Teks UI dalam bahasa pengguna.
 
 ## project
-`name` (nama file, huruf/angka/_/-), `title`, `subtitle`, `theme` (Purple Ocean Matrix Crimson Luxury Sakura White Dark Tosca DarkPurple Midnight Carbon), `width` 330, `height` 300, `luluUrl` (URL raw LuluUI.lua – WAJIB isi dengan milik pengguna), `placeIds` [angka], `placeGuard` warn|stop|hold, `autosave` true, `infoTab` true, `skipLoading`, `resolveTimeout` 10, `maxActionsPerSecond` 30, `debug`, `minify`, `comments`.
+`name` (nama file, huruf/angka/_/-), `title`, `subtitle`, `theme` (Purple Ocean Matrix Crimson Luxury Sakura White Dark Tosca DarkPurple Midnight Carbon), `width` 330, `height` 300, `luluUrl` (URL raw LuluUI.lua; default https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua), `placeIds` [angka], `placeGuard` warn|stop|hold, `autosave` true, `infoTab` true, `skipLoading`, `resolveTimeout` 10, `maxActionsPerSecond` 30, `debug`, `minify`, `comments`.
 
 ## targets[]
 `{id, alias, path, type, note}` — path dari service: `ReplicatedStorage.Remotes.Collect`, `Players.LocalPlayer.leaderstats.Coins`, `Workspace.Items`. Bila nama mengandung titik, pisah dengan `/`. type: auto remote function bindable value instance folder prompt click tool humanoid player.

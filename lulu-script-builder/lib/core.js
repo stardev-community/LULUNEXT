@@ -206,7 +206,7 @@
   F.project = function () {
     return {
       name: 'MyScript', title: 'My Script', subtitle: '', theme: 'Dark', width: 330, height: 300,
-      icon: '', luluUrl: 'https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua',
+      icon: '', luluUrl: 'https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua',
       resolveTimeout: 10, placeIds: [], placeGuard: 'warn', autosave: true, infoTab: true, debug: false,
       skipLoading: false, loadingTitle: '', loadingDesc: '', loadingCreator: '', maxActionsPerSecond: 30,
       ruleBurst: 25, minify: false, comments: true

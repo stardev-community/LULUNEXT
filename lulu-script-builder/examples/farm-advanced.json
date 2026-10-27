@@ -1,5 +1,5 @@
 {
-  "project": { "name": "FarmPro", "title": "Farm Pro", "theme": "Midnight", "placeGuard": "warn", "luluUrl": "https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua" },
+  "project": { "name": "FarmPro", "title": "Farm Pro", "theme": "Midnight", "placeGuard": "warn", "luluUrl": "https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua" },
   "targets": [
     { "id": "t_spot", "alias": "Spot", "path": "Workspace.Farm.Spot", "type": "instance" },
     { "id": "t_prompt", "alias": "Prompt", "path": "Workspace.Farm.Spot.ProximityPrompt", "type": "prompt" },
